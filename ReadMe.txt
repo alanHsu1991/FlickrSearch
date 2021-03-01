@@ -1,0 +1,1 @@
+This project is using MVC as the design pattern
