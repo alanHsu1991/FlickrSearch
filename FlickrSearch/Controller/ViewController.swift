@@ -8,17 +8,25 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var searchPictures: UITextField!
     @IBOutlet weak var numberOfPictures: UITextField!
     
     var flickrManager = FlickrManager()
+    var flickrDatas = [FlickrData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchPictures.delegate = self
         numberOfPictures.delegate = self
-        
+        FlickrManager.shared.fetchPicture1(theType: "food", theNumber: "20", completionHandler: {[weak self] (result) in
+            self?.flickrDatas = result
+            print(self?.flickrDatas ?? "Shit")
+            DispatchQueue.main.async {
+                //self?.collectionView.reloadData()
+            }
+        })
     }
 
     @IBAction func searchPressed(_ sender: UIButton) {
@@ -28,6 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print(searchPictures.text!)
         print(numberOfPictures.text!)
         
+        //self.performSegue(withIdentifier: "", sender: <#T##Any?#>)
     }
     
 
