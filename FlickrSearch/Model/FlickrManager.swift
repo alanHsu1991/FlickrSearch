@@ -8,14 +8,50 @@
 import Foundation
 
 struct FlickrManager {
-    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ee25a6347d43e4acefcf96df57cce47a&format=json&nojsoncallback=1"
+    
+    static let shared = FlickrManager()
+    
+    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1804de219111a0a271dacbf6e9bbf97a&format=json&nojsoncallback=1"
+    
+    func fetchPicture1(theType: String, theNumber: String, completionHandler: @escaping (_ flickrDatas: [FlickrData]) -> Void) {
+        let urlString = "\(flickrURL)&text=\(theType)&per_page=\(theNumber)"
+        
+        //1. Create a URL
+        if let url = URL(string: urlString) {
+            
+            //2. Create a URLSession
+            let session = URLSession(configuration: .default)
+            
+            //3. Give the session a task
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                if let safeData = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedData = try decoder.decode(SearchData.self, from: safeData)
+                        print(decodedData.photos.photo)
+                        completionHandler(decodedData.photos.photo)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+            //4. Start the task
+            task.resume()
+        }
+    }
     
     func fetchPicture(theType: String, theNumber: String){
         let urlString = "\(flickrURL)&text=\(theType)&per_page=\(theNumber)"
-        performRequest(urlString: urlString)
+        //performRequest(urlString: urlString, completionHandler: <#([FlickrData]) -> Void#>)
     }
     
-    func performRequest(urlString: String){
+    func performRequest(urlString: String, completionHandler: @escaping (_ flickrDatas: [FlickrData]) -> Void){
+        
         //1. Create a URL
         if let url = URL(string: urlString){
             
@@ -30,10 +66,16 @@ struct FlickrManager {
                 }
                 
                 if let safeData = data {
-                    self.parseJSON(flickrData: safeData)
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedData = try decoder.decode(SearchData.self, from: safeData)
+                        print(decodedData.photos.photo)
+                        completionHandler(decodedData.photos.photo)
+                    } catch {
+                        print(error)
+                    }
                 }
             }
-            
             //4. Start the task
             task.resume()
         }
@@ -43,13 +85,14 @@ struct FlickrManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(SearchData.self, from: flickrData)
-            print(decodedData.photos.photo)
+            print(decodedData.photos.photo[0])
         } catch {
             print(error)
         }
     }
     
 }
+
 
 // text=sexy
 

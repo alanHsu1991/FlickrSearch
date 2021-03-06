@@ -18,7 +18,6 @@ struct FlickrData: Decodable {
     var imageURL: URL {
         return URL(string: "https://live.staticflickr.com/\(server)/\(id)_\(secret)_m.jpg")!
     }
-
 }
 
 struct PhotoData: Decodable {
