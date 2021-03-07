@@ -11,7 +11,7 @@ final class FlickrPhotosViewController: UICollectionViewController {
     
     // MARK: - Properties
     
-    private let reuseIdentifier = "FlickrCell"
+    let reuseIdentifier = "FlickrCell"
     var flickrDatas = [FlickrData]()
     
     // MARK: - Life Cycle
@@ -19,28 +19,38 @@ final class FlickrPhotosViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FlickrManager.shared.fetchPicture1(theType: "food", theNumber: "20", completionHandler: {[weak self] (result) in
+        FlickrManager.shared.fetchPicture1(theType: "", theNumber: "", completionHandler: {[weak self] (result) in
             self?.flickrDatas = result
-            print(self?.flickrDatas ?? "Shit")
+            print(self?.flickrDatas ?? "Error")
             DispatchQueue.main.async {
-                //self?.collectionView.reloadData()
+                self?.collectionView.reloadData()
             }
         })
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-////        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? UICollectionViewCell() else do {return UICollectionViewCell()}
-////        return cell
-//    }
+    //MARK: - UICollectionViewDataSource
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return flickrDatas.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrPhotoCell
+        
+        let photo = flickrDatas[indexPath.item]
+        cell.imageLabel.text = photo.title
+        cell.imageView.image = nil
+        cell.imageURL = photo.imageURL
+        
+        
+        
+        return cell
+        
+    }
 }
 
 
-
-private let sectionInsets = UIEdgeInsets(
-  top: 50.0,
-  left: 20.0,
-  bottom: 50.0,
-  right: 20.0)
 
 
 

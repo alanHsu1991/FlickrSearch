@@ -18,6 +18,7 @@
 		E7002B2525E52A6E00EC2E10 /* FlickrManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7002B2425E52A6E00EC2E10 /* FlickrManager.swift */; };
 		E7002B2D25E52A8000EC2E10 /* FlickrData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7002B2C25E52A8000EC2E10 /* FlickrData.swift */; };
 		E7002B3925EF89D500EC2E10 /* FlickrPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7002B3825EF89D500EC2E10 /* FlickrPhotosViewController.swift */; };
+		E7002B3F25F51CD000EC2E10 /* FlickrPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7002B3E25F51CD000EC2E10 /* FlickrPhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E7002B2425E52A6E00EC2E10 /* FlickrManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrManager.swift; sourceTree = "<group>"; };
 		E7002B2C25E52A8000EC2E10 /* FlickrData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrData.swift; sourceTree = "<group>"; };
 		E7002B3825EF89D500EC2E10 /* FlickrPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlickrPhotosViewController.swift; path = FlickrSearch/Controller/FlickrPhotosViewController.swift; sourceTree = SOURCE_ROOT; };
+		E7002B3E25F51CD000EC2E10 /* FlickrPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				E7002AF425E5294900EC2E10 /* Main.storyboard */,
+				E7002B3E25F51CD000EC2E10 /* FlickrPhotoCell.swift */,
 				E7002B3825EF89D500EC2E10 /* FlickrPhotosViewController.swift */,
 			);
 			path = View;
@@ -293,6 +296,7 @@
 			files = (
 				E7002B3925EF89D500EC2E10 /* FlickrPhotosViewController.swift in Sources */,
 				E7002B2525E52A6E00EC2E10 /* FlickrManager.swift in Sources */,
+				E7002B3F25F51CD000EC2E10 /* FlickrPhotoCell.swift in Sources */,
 				E7002B2D25E52A8000EC2E10 /* FlickrData.swift in Sources */,
 				E7002AF325E5294900EC2E10 /* ViewController.swift in Sources */,
 				E7002AEF25E5294900EC2E10 /* AppDelegate.swift in Sources */,

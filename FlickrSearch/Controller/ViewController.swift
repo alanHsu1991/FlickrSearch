@@ -20,9 +20,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         searchPictures.delegate = self
         numberOfPictures.delegate = self
-        FlickrManager.shared.fetchPicture1(theType: "food", theNumber: "20", completionHandler: {[weak self] (result) in
+        FlickrManager.shared.fetchPicture1(theType: "", theNumber: "", completionHandler: {[weak self] (result) in
             self?.flickrDatas = result
-            print(self?.flickrDatas ?? "Shit")
+            print(self?.flickrDatas ?? "Error")
             DispatchQueue.main.async {
                 //self?.collectionView.reloadData()
             }
@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print(searchPictures.text!)
         print(numberOfPictures.text!)
         
-        //self.performSegue(withIdentifier: "", sender: <#T##Any?#>)
+        self.performSegue(withIdentifier: "FlickrCell", sender: self)
     }
     
 
@@ -63,7 +63,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if let type = searchPictures.text, let number = numberOfPictures.text {
-            flickrManager.fetchPicture(theType: type, theNumber: number)
+            FlickrManager.shared.fetchPicture1(theType: type, theNumber: number, completionHandler: {[weak self] (result) in
+                self?.flickrDatas = result
+                print(self?.flickrDatas ?? "Error")
+                DispatchQueue.main.async {
+                    //self?.collectionView.reloadData()
+                }
+            })
         }
         
 //        searchPictures.text = ""
