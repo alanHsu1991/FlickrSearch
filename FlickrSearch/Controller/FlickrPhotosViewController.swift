@@ -40,8 +40,7 @@ final class FlickrPhotosViewController: UICollectionViewController {
         
         let photo = flickrDatas[indexPath.item]
         cell.imageLabel.text = photo.title
-        cell.imageView.image = nil
-        cell.imageURL = photo.imageURL
+        cell.imageView.image = UIImage(
         
         
         
