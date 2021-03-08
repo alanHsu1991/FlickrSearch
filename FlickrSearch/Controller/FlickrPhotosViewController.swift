@@ -40,10 +40,14 @@ final class FlickrPhotosViewController: UICollectionViewController {
         
         let photo = flickrDatas[indexPath.item]
         cell.imageLabel.text = photo.title
-        cell.imageView.image = UIImage(
         
-        
-        
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: photo.imageURL){
+                DispatchQueue.main.async {
+                    cell.imageView.image = UIImage(data: data)
+                }
+            }
+        }
         return cell
         
     }
