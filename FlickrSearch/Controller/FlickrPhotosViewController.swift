@@ -14,12 +14,16 @@ final class FlickrPhotosViewController: UICollectionViewController {
     let reuseIdentifier = "FlickrCell"
     var flickrDatas = [FlickrData]()
     
+    
+    var searchPictureText: String = ""
+    var numberOfPictureText: String = ""
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FlickrManager.shared.fetchPicture1(theType: "", theNumber: "", completionHandler: {[weak self] (result) in
+        FlickrManager.shared.fetchPicture1(theType: searchPictureText, theNumber: numberOfPictureText, completionHandler: {[weak self] (result) in
             self?.flickrDatas = result
             print(self?.flickrDatas ?? "Error")
             DispatchQueue.main.async {
@@ -51,8 +55,10 @@ final class FlickrPhotosViewController: UICollectionViewController {
         return cell
         
     }
+    
+    // UICollectionVIewDelegate
+    // UICollectionViewDelegateFlowLayout
 }
-
 
 
 

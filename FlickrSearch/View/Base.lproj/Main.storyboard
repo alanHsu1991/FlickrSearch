@@ -42,7 +42,6 @@
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D57-RH-JXg"/>
-                                    <segue destination="Ljb-T4-I6P" kind="show" identifier="FlickrCell" id="m1A-eh-eCX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,7 +67,7 @@
         <!--Flickr Photos View Controller-->
         <scene sceneID="pkN-fz-Znc">
             <objects>
-                <collectionViewController id="Ljb-T4-I6P" customClass="FlickrPhotosViewController" customModule="FlickrSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="flickrView" id="Ljb-T4-I6P" customClass="FlickrPhotosViewController" customModule="FlickrSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tlg-Yu-x7y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

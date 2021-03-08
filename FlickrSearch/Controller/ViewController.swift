@@ -17,16 +17,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchPictures.delegate = self
         numberOfPictures.delegate = self
-        FlickrManager.shared.fetchPicture1(theType: "", theNumber: "", completionHandler: {[weak self] (result) in
-            self?.flickrDatas = result
-            print(self?.flickrDatas ?? "Error")
-            DispatchQueue.main.async {
-                //self?.collectionView.reloadData()
-            }
-        })
     }
 
     @IBAction func searchPressed(_ sender: UIButton) {
@@ -36,7 +28,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print(searchPictures.text!)
         print(numberOfPictures.text!)
         
-        self.performSegue(withIdentifier: "FlickrCell", sender: self)
+        //let flickrView = FlickrPhotosViewController()
+        //self.navigationController?.pushViewController(flickrView, animated: true)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let flickrView = storyboard.instantiateViewController(identifier: "flickrView") as? FlickrPhotosViewController
+
+        flickrView?.searchPictureText = searchPictures.text ?? ""
+        flickrView?.numberOfPictureText = numberOfPictures.text ?? ""
+    
+        guard let existedView = flickrView else {return}
+        self.navigationController?.pushViewController(existedView, animated: true)
+
     }
     
 
@@ -65,15 +68,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let type = searchPictures.text, let number = numberOfPictures.text {
             FlickrManager.shared.fetchPicture1(theType: type, theNumber: number, completionHandler: {[weak self] (result) in
                 self?.flickrDatas = result
-                print(self?.flickrDatas ?? "Error")
+                //print(self?.flickrDatas ?? "Error")
                 DispatchQueue.main.async {
                     //self?.collectionView.reloadData()
                 }
             })
         }
-        
-//        searchPictures.text = ""
-//        numberOfPictures.text = ""
+
     }
     
 }

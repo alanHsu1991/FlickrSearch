@@ -3,4 +3,54 @@
    uuid = "9E2813B7-5EE1-49F0-9393-03EC1156BAE0"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "08284A10-426B-4136-9FA1-677B8453D4CA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlickrSearch/Controller/FlickrPhotosViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "08284A10-426B-4136-9FA1-677B8453D4CA - c6e5ed3775558bbe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FlickrSearch.FlickrPhotosViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "FlickrSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alan/Desktop/FlickrSearch/FlickrSearch/Controller/FlickrPhotosViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "08284A10-426B-4136-9FA1-677B8453D4CA - e0d3a370821b4eab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;FlickrSearch.FlickrData&gt;) -&gt; () in FlickrSearch.FlickrPhotosViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "FlickrSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alan/Desktop/FlickrSearch/FlickrSearch/Controller/FlickrPhotosViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "190">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

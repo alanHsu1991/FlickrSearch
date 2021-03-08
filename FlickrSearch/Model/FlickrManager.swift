@@ -11,7 +11,7 @@ struct FlickrManager {
     
     static let shared = FlickrManager()
     
-    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=904f8c16e3857c48332fc8e39a9154c5&format=json&nojsoncallback=1"
+    let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1a37290cec0a7bed4c16be549004b5a2&format=json&nojsoncallback=1"
     
     func fetchPicture1(theType: String, theNumber: String, completionHandler: @escaping (_ flickrDatas: [FlickrData]) -> Void) {
         let urlString = "\(flickrURL)&text=\(theType)&per_page=\(theNumber)"
@@ -45,6 +45,8 @@ struct FlickrManager {
         }
     }
 }
+
+
     
 //    func fetchPicture(theType: String, theNumber: String){
 //        let urlString = "\(flickrURL)&text=\(theType)&per_page=\(theNumber)"
