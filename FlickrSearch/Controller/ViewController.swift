@@ -15,6 +15,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var flickrManager = FlickrManager()
     var flickrDatas = [FlickrData]()
     
+    let button = UIButton?.self
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchPictures.delegate = self
@@ -42,7 +44,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -62,6 +64,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             return false
         }
     }
+    
+    
+
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         

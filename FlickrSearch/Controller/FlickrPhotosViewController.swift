@@ -12,11 +12,13 @@ final class FlickrPhotosViewController: UICollectionViewController {
     // MARK: - Properties
     
     let reuseIdentifier = "FlickrCell"
+    let itemsPerRow: CGFloat = 2    // cells per role
+    let sectionInsets = UIEdgeInsets( top: 50, left:20, bottom: 50, right: 20)    // Modifying the view's frame
     var flickrDatas = [FlickrData]()
-    
     
     var searchPictureText: String = ""
     var numberOfPictureText: String = ""
+    
     
     // MARK: - Life Cycle
     
@@ -55,10 +57,40 @@ final class FlickrPhotosViewController: UICollectionViewController {
         return cell
         
     }
+}
+    
+    //MARK: - CollectionFiewLayout
+    
+extension FlickrPhotosViewController: UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Size of the cell
+        
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)    // Return the size of a square
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        // Return the spacing between the cells, header and footer
+        
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        // Control the spacing between each line in the layout
+        
+        return sectionInsets.left
+    }
+    
+}
+    
     
     // UICollectionVIewDelegate
     // UICollectionViewDelegateFlowLayout
-}
+
 
 
 
