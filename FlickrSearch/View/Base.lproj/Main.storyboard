@@ -57,6 +57,7 @@
                     <navigationItem key="navigationItem" id="2EV-vT-YGf"/>
                     <connections>
                         <outlet property="numberOfPictures" destination="mxy-Jk-Brj" id="PlZ-wz-A17"/>
+                        <outlet property="searchButton" destination="1Ns-iM-bXM" id="LgK-AU-2Ed"/>
                         <outlet property="searchPictures" destination="Bry-D7-vob" id="1b1-4m-GeR"/>
                     </connections>
                 </viewController>

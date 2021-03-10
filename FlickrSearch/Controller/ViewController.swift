@@ -11,6 +11,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var searchPictures: UITextField!
     @IBOutlet weak var numberOfPictures: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     
     var flickrManager = FlickrManager()
     var flickrDatas = [FlickrData]()
@@ -21,6 +22,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         searchPictures.delegate = self
         numberOfPictures.delegate = self
+        
+        if ((searchPictures.text?.isEmpty) != nil), ((numberOfPictures.text?.isEmpty) != nil) {
+            searchButton.isEnabled = false
+        }
+        
     }
 
     @IBAction func searchPressed(_ sender: UIButton) {
@@ -42,6 +48,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         guard let existedView = flickrView else {return}
         self.navigationController?.pushViewController(existedView, animated: true)
 
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+
+        if !text.isEmpty{
+            searchButton.isEnabled = true
+        } else {
+            searchButton.isEnabled = false
+        }
+        return true
     }
     
     
